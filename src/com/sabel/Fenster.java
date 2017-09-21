@@ -45,6 +45,7 @@ public class Fenster extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 jPanel.setBackground(Color.BLUE);
             }
+
         });
     }
 
