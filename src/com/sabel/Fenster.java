@@ -1,6 +1,11 @@
 package com.sabel;
 
+import com.sun.org.apache.regexp.internal.RE;
+
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Fenster extends JFrame{
 
@@ -8,8 +13,7 @@ public class Fenster extends JFrame{
     private JButton jbtnRed;
     private JButton jbtnBlue;
     private JPanel jPanel;
-    private JLabel jLabel;
-    private Object currentColor;
+
 
     public Fenster() {
         super("Farbenspiel");
@@ -17,23 +21,43 @@ public class Fenster extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(300,300);
         initComponents();
+        this.initEvents();
         this.setVisible(true);
+    }
+
+    private void initEvents() {
+        jbtnRed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jPanel.setBackground(Color.RED);
+            }
+        });
+
+        jbtnGreen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jPanel.setBackground(Color.GREEN);
+            }
+        });
+
+        jbtnBlue.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jPanel.setBackground(Color.BLUE);
+            }
+        });
     }
 
     private void initComponents(){
         jPanel = new JPanel();
-        jLabel = new JLabel();
-        jLabel.setAlignmentX(100);
-        jLabel.setAlignmentY(100);
         jbtnGreen = new JButton("Green");
         jbtnRed = new JButton("Red");
         jbtnBlue = new JButton("Blue");
         this.jPanel.add(jbtnGreen); // Button liegt im Panel und Panel wiederum im Fenster
         this.jPanel.add(jbtnRed);
         this.jPanel.add(jbtnBlue);
-        this.jPanel.add(jLabel);
         this.add(jPanel);
-        jLabel.setText("Please choose your color");
+
 
     }
 }
